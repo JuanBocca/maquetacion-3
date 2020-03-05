@@ -18,15 +18,15 @@
 
 /* CABECERA */
 #header {
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: 68% 30%;
     align-items: center;
+
+    width: 100%;
     height: 120px;
     border-bottom: 1px solid rgba(225, 225, 226, 0.8);
 }
 .logo {
-    flex-grow: 1;
-    flex-basis: 65%;
     padding: 10px;
     font-family: Helvetica;
     font-style: italic;
@@ -44,16 +44,17 @@
     font-size: 35px;
 }
 #menu {
-    flex-grow: 1;
-    flex-basis: 30%;
+    width: 100%;
     height: 100%;
     padding-right: 20px;
 }
 #menu ul {
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
-    justify-content: space-between;
+
+    justify-content: center;
+    text-align: center;
     height: 100%;
     list-style: none;
 }
@@ -70,21 +71,23 @@
 
 /* CONTENIDO */
 #content {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    align-items: start;
+    justify-items: space-between;
+    grid-column-gap: 7px;
+
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 #projects {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    flex-basis: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 255px);
+    grid-gap: 20px;
+    align-items: start;
 }
 .project {
-    flex-basis: 250px;
-    flex-grow: 1;
     margin-bottom: 25px;
     margin-right: 20px;
     border: 1px solid #ccc;
@@ -109,11 +112,8 @@
 }
 
 #aside {
-    flex-basis: 15%;
     margin-right: 30px;
     padding: 15px;
-    display: flex;
-    flex-flow: column wrap;
 }
 #aside h2 {
     display: block;
@@ -148,78 +148,73 @@
 
 /* PIE DE PAGINA */
 #footer {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    justify-content: start;
+
     height: 120px;
     align-items: center;
     border-top: 1px solid rgba(225, 225, 226, 0.8);
 }
 #footer .logo {
     opacity: 0.5;
-    flex-basis: auto;
-    flex-grow: 1;
     order: 2;
     text-align: right;
     margin-right: 20px;
 }
 #footer .info {
-    flex-grow: 1;
     margin-left: 20px;
     order: 1;
     color: #444;
 }
 
 /* RESPONSIVE */
-@media (max-width: 1334px) {
+@media (max-width: 785px) {
     #header {
-        text-align: center;
-    }
-    #menu ul {
-        margin-top: 20px;
-        align-items: flex-start;
-        justify-content: space-evenly;
-    }
-}
-@media (max-width: 587px) {
-    #content {
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: space-between;
-        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 100%;
+        align-items: center;
+        justify-content: center;
+        height: 140px;
         padding-bottom: 20px;
     }
-    #aside {
-        margin: 0px;
+    #header h1 {
+        text-align: center;
     }
-    #aside ul {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
+    #content {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+        justify-items: space-between;
+        grid-column-gap: auto;
     }
-    #aside ul li {
-        flex-grow: 1;
-        margin-left: 5px;
-        margin-right: 5px;
+    
+    #projects {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
     }
     .project {
-        margin-right: 20px;
-        margin-left: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    #aside {
+        margin-right: 0px;
+        padding: 15px;
+    }
+    #aside ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+    #footer {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-content: start;
+        text-align: center !important;
     }
     #footer .logo {
-        flex-grow: 1;
-        order: 1;
-        flex-basis: 100%;
-        text-align: center;
-        margin: 0px;
-    }
-    #footer .info {
-        flex-grow: 1;
-        order: 2;
-        margin-left: 20px;
-        color: #444;
-        flex-basis: 100%;
-        text-align: center;
-        margin: 0px;
+        text-align: center !important;
     }
 }
